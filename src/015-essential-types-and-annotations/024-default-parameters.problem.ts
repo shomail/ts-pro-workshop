@@ -1,8 +1,8 @@
-import { Expect, Equal } from "@total-typescript/helpers";
+import { Expect, Equal } from '@total-typescript/helpers';
 
-import { expect, it } from "vitest";
+import { expect, it } from 'vitest';
 
-const concatName = (first: string, last?: string) => {
+const concatName = (first: string, last: string = 'Pocock') => {
   if (!last) {
     return first;
   }
@@ -10,18 +10,18 @@ const concatName = (first: string, last?: string) => {
   return `${first} ${last}`;
 };
 
-it("should return the full name", () => {
-  const result = concatName("John", "Doe");
+it('should return the full name', () => {
+  const result = concatName('John', 'Doe');
 
   type test = Expect<Equal<typeof result, string>>;
 
-  expect(result).toEqual("John Doe");
+  expect(result).toEqual('John Doe');
 });
 
-it("should return the first name", () => {
-  const result = concatName("John");
+it('should return the first name', () => {
+  const result = concatName('John');
 
   type test = Expect<Equal<typeof result, string>>;
 
-  expect(result).toEqual("John Pocock");
+  expect(result).toEqual('John Pocock');
 });

@@ -1,7 +1,7 @@
-import { Expect, Equal } from "@total-typescript/helpers";
+import { Expect, Equal } from '@total-typescript/helpers';
 
-async function fetchData() {
-  const response = await fetch("https://api.example.com/data");
+async function fetchData(): Promise<number> {
+  const response = await fetch('https://api.example.com/data');
   const data = await response.json();
   return data;
 }

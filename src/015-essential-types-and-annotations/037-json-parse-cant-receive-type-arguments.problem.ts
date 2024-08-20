@@ -1,10 +1,10 @@
-import { Expect, Equal } from "@total-typescript/helpers";
-import { expect, it } from "vitest";
+import { Expect, Equal } from '@total-typescript/helpers';
+import { expect, it } from 'vitest';
 
-const parsedData = JSON.parse<{
+const parsedData = JSON.parse('{"name": "Alice", "age": 30}') as {
   name: string;
   age: number;
-}>('{"name": "Alice", "age": 30}');
+};
 
 type test = Expect<
   Equal<
@@ -16,9 +16,9 @@ type test = Expect<
   >
 >;
 
-it("Should be the correct shape", () => {
+it('Should be the correct shape', () => {
   expect(parsedData).toEqual({
-    name: "Alice",
+    name: 'Alice',
     age: 30,
   });
 });

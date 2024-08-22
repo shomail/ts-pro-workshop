@@ -1,29 +1,34 @@
-import { Equal, Expect } from "@total-typescript/helpers";
-import { expect, it } from "vitest";
+import { Equal, Expect } from '@total-typescript/helpers';
+import { expect, it } from 'vitest';
 
 type Circle = {
-  kind: "circle";
+  kind: 'circle';
   radius: number;
 };
 
 type Square = {
-  kind: "square";
+  kind: 'square';
   sideLength: number;
 };
 
 type Shape = Circle | Square;
 
-function calculateArea({ kind, radius, sideLength }: Shape) {
-  if (kind === "circle") {
-    return Math.PI * radius * radius;
+//there is a limitation to destructure a discriminated union
+//because here if we destructure kind and then use ...shape, the kind will be detached from the shape and in the if block typescript will think shape is still union type.
+// so the best approach is to pass the shape as it is and then destructure it in the if block
+function calculateArea(shape: Shape) {
+  if (shape.kind === 'circle') {
+    const { radius } = shape;
+    return Math.PI * shape.radius * radius;
   } else {
+    const { sideLength } = shape;
     return sideLength * sideLength;
   }
 }
 
-it("Should calculate the area of a circle", () => {
+it('Should calculate the area of a circle', () => {
   const result = calculateArea({
-    kind: "circle",
+    kind: 'circle',
     radius: 5,
   });
 
@@ -32,9 +37,9 @@ it("Should calculate the area of a circle", () => {
   type test = Expect<Equal<typeof result, number>>;
 });
 
-it("Should calculate the area of a square", () => {
+it('Should calculate the area of a square', () => {
   const result = calculateArea({
-    kind: "square",
+    kind: 'square',
     sideLength: 5,
   });
 

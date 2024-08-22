@@ -1,26 +1,26 @@
-import { Equal, Expect } from "@total-typescript/helpers";
+import { Equal, Expect } from '@total-typescript/helpers';
 
 type User = {
   id: string;
 };
 
-type ApiResponse = [boolean, User[] | string];
+type ApiResponse = [true, User[]] | [false, string];
 
 async function fetchData(): Promise<ApiResponse> {
   try {
-    const response = await fetch("https://api.example.com/data");
+    const response = await fetch('https://api.example.com/data');
     if (!response.ok) {
       return [
         false,
         // Imagine more detailed error handling here
-        "An error occurred",
+        'An error occurred',
       ];
     }
 
     const data = await response.json();
     return [true, data];
   } catch (error) {
-    return [false, "An error occurred"];
+    return [false, 'An error occurred'];
   }
 }
 

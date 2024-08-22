@@ -1,9 +1,9 @@
 const somethingDangerous = () => {
   if (Math.random() > 0.5) {
-    throw new Error("Something went wrong");
+    throw new Error('Something went wrong');
   }
 
-  return "all good";
+  return 'all good';
 };
 
 try {
@@ -11,7 +11,7 @@ try {
 } catch (error) {
   // How do we change this code to make it
   // not show a red squiggly?
-  if (true) {
+  if (error instanceof Error) {
     console.error(error.message);
   }
 }

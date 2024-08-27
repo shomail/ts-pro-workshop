@@ -5,20 +5,20 @@ interface Product {
   description: string;
 }
 
-const addProduct = (productInfo: Product) => {
+const addProduct = (productInfo: Omit<Product, 'id'>) => {
   // Do something with the productInfo
 };
 
 addProduct({
-  name: "Book",
+  name: 'Book',
   price: 12.99,
-  description: "A book about Dragons",
+  description: 'A book about Dragons',
 });
 
 addProduct({
   // @ts-expect-error
   id: 1,
-  name: "Book",
+  name: 'Book',
   price: 12.99,
-  description: "A book about Dragons",
+  description: 'A book about Dragons',
 });

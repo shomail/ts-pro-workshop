@@ -1,4 +1,4 @@
-import { expect, it } from "vitest";
+import { expect, it } from 'vitest';
 
 type User = {
   id: string;
@@ -21,7 +21,9 @@ type Product = {
   imageId: string;
 };
 
-const getAvatarImage = (entity: unknown) => {
+type Entity = User | Organisation | Product;
+
+const getAvatarImage = (entity: Entity) => {
   {
     // Should not be able to access properties that are
     // not common to both types
@@ -42,44 +44,44 @@ const getAvatarImage = (entity: unknown) => {
   };
 };
 
-it("Should work for a user", () => {
+it('Should work for a user', () => {
   const result = getAvatarImage({
-    id: "1",
-    name: "John",
+    id: '1',
+    name: 'John',
     age: 20,
-    imageId: "abc123",
+    imageId: 'abc123',
   });
 
   expect(result).toEqual({
-    url: "https://via.placeholder.com/abc123",
-    alt: "John Avatar",
+    url: 'https://via.placeholder.com/abc123',
+    alt: 'John Avatar',
   });
 });
 
-it("Should work for an organisation", () => {
+it('Should work for an organisation', () => {
   const result = getAvatarImage({
-    id: "1",
-    name: "Total TypeScript",
-    address: "1 Main Street",
-    imageId: "abc123",
+    id: '1',
+    name: 'Total TypeScript',
+    address: '1 Main Street',
+    imageId: 'abc123',
   });
 
   expect(result).toEqual({
-    url: "https://via.placeholder.com/abc123",
-    alt: "Total TypeScript Avatar",
+    url: 'https://via.placeholder.com/abc123',
+    alt: 'Total TypeScript Avatar',
   });
 });
 
-it("Should work for a product", () => {
+it('Should work for a product', () => {
   const result = getAvatarImage({
-    id: "1",
-    name: "TypeScript Mug",
+    id: '1',
+    name: 'TypeScript Mug',
     price: 10,
-    imageId: "abc123",
+    imageId: 'abc123',
   });
 
   expect(result).toEqual({
-    url: "https://via.placeholder.com/abc123",
-    alt: "TypeScript Mug Avatar",
+    url: 'https://via.placeholder.com/abc123',
+    alt: 'TypeScript Mug Avatar',
   });
 });

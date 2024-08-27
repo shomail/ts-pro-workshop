@@ -1,33 +1,33 @@
-import { expect, it } from "vitest";
+import { expect, it } from 'vitest';
 
-const hasKey = (obj: object, key: string) => {
+const hasKey = (obj: object, key: PropertyKey) => {
   return obj.hasOwnProperty(key);
 };
 
-it("Should work on string keys", () => {
+it('Should work on string keys', () => {
   const obj = {
-    foo: "bar",
+    foo: 'bar',
   };
 
-  expect(hasKey(obj, "foo")).toBe(true);
-  expect(hasKey(obj, "bar")).toBe(false);
+  expect(hasKey(obj, 'foo')).toBe(true);
+  expect(hasKey(obj, 'bar')).toBe(false);
 });
 
-it("Should work on number keys", () => {
+it('Should work on number keys', () => {
   const obj = {
-    1: "bar",
+    1: 'bar',
   };
 
   expect(hasKey(obj, 1)).toBe(true);
   expect(hasKey(obj, 2)).toBe(false);
 });
 
-it("Should work on symbol keys", () => {
-  const fooSymbol = Symbol("foo");
-  const barSymbol = Symbol("bar");
+it('Should work on symbol keys', () => {
+  const fooSymbol = Symbol('foo');
+  const barSymbol = Symbol('bar');
 
   const obj = {
-    [fooSymbol]: "bar",
+    [fooSymbol]: 'bar',
   };
 
   expect(hasKey(obj, fooSymbol)).toBe(true);

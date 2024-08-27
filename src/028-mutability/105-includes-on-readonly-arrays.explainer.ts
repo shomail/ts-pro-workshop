@@ -1,8 +1,11 @@
+//PROBLEM IS WITH USE OF INCLUDES OR INDEXOF WITH A STRING WHICH IS NOT PART OF READONLY ARRAY, TS WILL ERROR, BECAUSE IT IS TRYING TO MATCH AGAINST THE PROVIDED VALUES.
+//USING THIS RESET LIBRARY WILL MAKE CHANGES TO THE INCLUDES AND INDEXOF AND INSTEAD OF MATCHING AGAINST PROVIDED CONST ARRAY, IT WILL MATCH AGAINST A STRING.
+
 // Try uncommenting this!
-// import "@total-typescript/ts-reset";
+import '@total-typescript/ts-reset';
 
-const users = ["matt", "sofia", "waqas"] as const;
+const users = ['matt', 'sofia', 'waqas'] as const;
 
-users.includes("bryan");
+users.includes('bryan');
 
-users.indexOf("bryan");
+users.indexOf('bryan');

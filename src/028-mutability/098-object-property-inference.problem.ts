@@ -19,6 +19,10 @@ const buttonAttributes: ButtonAttributes = {
   type: 'button',
 };
 
+// Doing int inline is also a prefered approch as ts knows this is the literal values passed to this function and cannot be changed.
+
+//modifyButton({type: 'button'});
+
 modifyButton(buttonAttributes);
 
 // Example 2
